@@ -15,7 +15,8 @@
         "intervention/image": "^2.5",
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
-      "ext-json": "*"
+        "ext-json": "*",
+        "ext-gd": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
