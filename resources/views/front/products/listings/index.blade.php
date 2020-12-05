@@ -39,7 +39,7 @@
                         @if(!empty($product['main_image']) && file_exists('images/product_image/small/'.$product['main_image']))
                             <img src="{{ asset('images/product_image/small/'.$product['main_image']) }}" alt="" style="width: 140px">
                         @else
-                            <img src="{{ asset('images/product_image/small/No_Image_small.png')}}" style="width: 140px">
+                            <img src="{{ asset('images/product_image/small/small-no-image.png')}}" style="width: 140px">
                         @endif
                     </div>
                     <div class="span4">
@@ -77,7 +77,7 @@
                                     @if(!empty($product['main_image']) && file_exists('images/product_image/small/'.$product['main_image']))
                                         <img src="{{ asset('images/product_image/small/'.$product['main_image']) }}" alt="" style="width: 140px">
                                     @else
-                                        <img src="{{ asset('images/product_image/small/No_Image_small.png')}}" style="width: 140px">
+                                        <img src="{{ asset('images/product_image/small/small-no-image.png')}}" style="width: 140px">
                                     @endif
                                 </a>
                                 <div class="caption">
