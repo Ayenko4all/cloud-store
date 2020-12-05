@@ -11,7 +11,7 @@ use App\ProductsImage;
 use App\Section;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
-use function GuzzleHttp\Promise\all;
+
 
 class ProductsController extends Controller
 {
