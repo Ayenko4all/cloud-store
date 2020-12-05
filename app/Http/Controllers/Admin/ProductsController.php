@@ -51,7 +51,7 @@ class ProductsController extends Controller
     }
 
     public function destroy($product){
-        $product = Product::find($product)->delete();
+        $product = Product::find($product);
         if (!empty($product->main_image)){
             if (file_exists('images/product_image/large'.$product->main_image)
                 ||file_exists('images/product_image/medium/'.$product->main_image)
@@ -60,11 +60,12 @@ class ProductsController extends Controller
                 unlink('images/product_image/medium/'.$product->main_image);
                 unlink('images/product_image/small/'.$product->main_image);
             }elseif (file_exists('videos/product_video/'.$product->product_video)){
-                unlink($product->product_video);
+                unlink('videos/product_video/'.$product->product_video);
             }
         }
-        ProductAttribute::where('product_id',$id)->delete();
-        ProductsImage::where('product_id',$id)->delete();
+        ProductAttribute::where('product_id',$product->id)->delete();
+        ProductsImage::where('product_id',$product->id)->delete();
+        $product->delete();
         $message = 'Product has been deleted successfully!';
         session()->flash('success', $message);
         return redirect()->back();
@@ -146,8 +147,8 @@ class ProductsController extends Controller
                 $imgPathSmall = 'images/product_image/small/' . $imgName;
                 //Upload Image
                 Image::make($image_tmp)->save($imgPath);
-                Image::make($image_tmp)->resize(500, 600)->save($imgPathMedium);
-                Image::make($image_tmp)->resize(250, 300)->save($imgPathSmall);
+                Image::make($image_tmp)->resize(500, 500)->save($imgPathMedium);
+                Image::make($image_tmp)->resize(250, 250)->save($imgPathSmall);
                 $product->main_image = $imgName;
             } else {
                 $imgName = "";
@@ -196,7 +197,7 @@ class ProductsController extends Controller
         $product->is_featured = !empty($request->input('is_featured')) ? $request->input('is_featured') : 'No';
         $product->save();
         session()->flash('success', $message);
-        return redirect()->route('admin.products');
+        return redirect()->route('admin.products.index');
     }
 
 

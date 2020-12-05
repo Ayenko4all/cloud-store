@@ -23,5 +23,7 @@ Route::namespace('Front')->group(function (){
 
     Route::get('/','IndexController@index')->name('front.index');
 
+    Route::get('/{url}','ListingsController')->name('front.listings.index');
+
 });
 

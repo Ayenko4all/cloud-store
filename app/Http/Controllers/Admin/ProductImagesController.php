@@ -32,8 +32,8 @@ class ProductImagesController extends Controller
                         $imgPathSmall = 'images/product_image/small/'.$imgName;
                         //Upload Image
                         Image::make($image)->save($imgPath);
-                        Image::make($image)->resize(500,600)->save($imgPathMedium);
-                        Image::make($image)->resize(250,300)->save($imgPathSmall);
+                        Image::make($image)->resize(500,500)->save($imgPathMedium);
+                        Image::make($image)->resize(250,250)->save($imgPathSmall);
                         $productImage->image = $imgName;
                         $productImage->product_id = $id;
                         $productImage->save();
@@ -53,7 +53,7 @@ class ProductImagesController extends Controller
     }
 
     public function delete($id){
-        $productImage = ProductsImage::find($id)->delete();
+        $productImage = ProductsImage::find($id);
         if (!empty($productImage->image)){
             if (file_exists('images/product_image/large'.$productImage->image)
                 ||file_exists('images/product_image/medium/'.$productImage->image)
@@ -63,6 +63,7 @@ class ProductImagesController extends Controller
                 unlink('images/product_image/small/'.$productImage->image);
             }
         }
+        $productImage->delete();
         $message = 'Product Image has been deleted successfully!';
         session()->flash('success', $message);
         return redirect()->back();

@@ -94,14 +94,9 @@ class CategoryController extends Controller
 
     public  function appendCategoriesLevel(Request $request){
         if ($request->ajax()){
-          $getCategories = Category::where([
-              'section_id'=> $request->input('section_id'),
-              'parent_id' => 0,
-              'status' => 1
-          ])->with('subcategories')->get();
-            $getCategories=json_decode(json_encode($getCategories), true);
-            return view('admin.categories.append_categories_level',
-                ['getCategories'=>$getCategories]);
+          $getCategories = Category::where(['section_id'=> $request->input('section_id'), 'parent_id' => 0, 'status' => 1])
+              ->with('subcategories')->get();
+            return view('admin.categories.append_categories_level', ['getCategories'=>$getCategories->toArray()]);
         }
     }
 

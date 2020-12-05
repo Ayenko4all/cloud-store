@@ -31,4 +31,5 @@ class Product extends Model
     public static  function featureCount(){
         return self::where('is_featured','YES')->count();
     }
+
 }

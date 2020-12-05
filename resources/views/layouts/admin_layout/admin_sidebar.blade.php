@@ -66,6 +66,8 @@
                                                     || request()->routeIs('admin.product.images')
                                                     || request()->routeIs('admin.brands.create')
                                                     || request()->routeIs('admin.brand.edit')
+                                                    || request()->routeIs('admin.banners.index')
+                                                    || request()->routeIs('admin.banners.create')
                                                     || request()->routeIs('admin.product.attribute')? 'active': '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -87,6 +89,14 @@
                                                                                     ? 'active': '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Brands</p>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="{{ route('admin.banners.index') }}" class="nav-link {{ request()->routeIs('admin.banners.index')
+                                                                                     || request()->routeIs('admin.banner.create')
+                                                                                    ? 'active': '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Banners</p>
                             </a>
                         </li>
                         <li class="nav-item ">

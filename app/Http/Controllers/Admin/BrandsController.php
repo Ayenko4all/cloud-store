@@ -25,8 +25,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        $title = 'Create Brand';
-        return view('admin.brands.create',['title'=>$title]);
+        return view('admin.brands.create',['title'=>'Create Brand']);
     }
 
     /**

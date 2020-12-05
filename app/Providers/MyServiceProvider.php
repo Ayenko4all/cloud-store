@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Banner;
 use App\Brand;
 use App\Section;
 use Illuminate\Support\ServiceProvider;
@@ -43,6 +44,13 @@ class MyServiceProvider extends ServiceProvider
                 'categories'=>$categories,
                 'brands'=>$brands
             ]);
+
+        });
+
+        view()->composer('layouts.front_layout._index_carousel', function ($view) {
+            $banners = Banner::where('status' , 1)->where('image' ,'!=', '')->get()->toArray();
+            //dd($banners);
+            $view->with(['banners'=>$banners]);
         });
     }
 }

@@ -13,7 +13,7 @@
 
 Route::prefix('/admin')->namespace('Admin')->group(function () {
 
-    Route::match(['get','post'],'/', 'AdminController@login')->name('admin.login');
+    Route::match(['get','post'],'/login', 'AdminController@login')->name('admin.login');
 
     Route::group(['middleware' => ['admin']], function () {
 
@@ -68,8 +68,15 @@ Route::prefix('/admin')->namespace('Admin')->group(function () {
         Route::patch('update-product-images-status', 'ProductImagesController@status')->name('admin.update.product.images.status');
         Route::get('delete-product-images/{id}', 'ProductImagesController@delete')->name('admin.delete.product.images');
 
-
-
+        /*Banner Route*/
+        Route::get('banners', 'BannersController@index')->name('admin.banners.index');
+        Route::get('banner/create', 'BannersController@create')->name('admin.banners.create');
+        Route::post('banner', 'BannersController@store')->name('admin.banners.store');
+        Route::get('banner/{banner}', 'BannersController@edit')->name('admin.banners.edit');
+        Route::patch('banner/update/{banner}', 'BannersController@update')->name('admin.banners.update');
+        Route::patch('update-banner-status', 'BannersController@status')->name('update.banners.status');
+        Route::get('delete-banner/{banner}', 'BannersController@destroy')->name('admin.banners.destroy');
+        Route::get('delete-banner-image/{banner}', 'BannersController@deleteBannerImage')->name('delete.banner.image');
    });
 
 });

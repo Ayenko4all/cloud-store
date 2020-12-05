@@ -21,7 +21,7 @@
                         <a class="brand" href="#">Cloud Store</a>
                         <div class="nav-collapse">
                             <ul class="nav">
-                                <li class="active"><a href="#">Home</a></li>
+                                <li class="active"><a href="{{ route('front.index') }}">Home</a></li>
                                 @foreach($sections as $section)
                                     @if ( count($section->categories) > 0)
                                         <li class="dropdown">
@@ -29,9 +29,9 @@
                                             <ul class="dropdown-menu">
                                                 <li class="divider"></li>
                                                 @foreach($section->categories as $category)
-                                                        <li class="nav-header"><a href="#">{{ $category->category_name }}</a></li>
+                                                        <li class="nav-header"><a href="{{route('front.listings.index',$category->url)}}">{{ $category->category_name }}</a></li>
                                                         @foreach($category->subcategories as $subcategory)
-                                                            <li><a href="#">{{ $subcategory->category_name }}</a></li>
+                                                            <li><a href="{{route('front.listings.index',$subcategory->url)}}"> &nbsp;&nbsp;&nbsp;{{ $subcategory->category_name }}</a></li>
                                                         @endforeach
                                                     <li class="divider"></li>
                                                 @endforeach

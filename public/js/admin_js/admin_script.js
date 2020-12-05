@@ -40,7 +40,7 @@ $(document).ready(function (message) {
         var status = $(this).children('i').attr('status');
         var url = $(this).attr('url');
         var data_id = $(this).attr("data_id");
-        //alert( data_id);
+        //alert(url +' '+ data_id +' '+ status);
         $.ajax({
             type: 'patch',
             url: '/admin/'+url,
