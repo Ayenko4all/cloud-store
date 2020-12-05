@@ -50,9 +50,9 @@
                 <div class="thumbnail">
                     <a  href="product_details.html">
                         @if(!empty($newProduct['main_image']) && file_exists('images/product_image/small/'.$newProduct['main_image']))
-                            <img src="{{ asset('images/product_image/small/'.$newProduct['main_image']) }}" alt="" style="width: 140px">
+                            <img src="{{ asset('images/product_image/small/'.$newProduct['main_image']) }}" alt="" >
                         @else
-                            <img src="{{ asset('images/product_image/small/small-no-image.png')}}" style="width: 140px">
+                            <img src="{{ asset('images/product_image/small/small-no-image.png')}}" >
                         @endif
                     </a>
                     <div class="caption">
