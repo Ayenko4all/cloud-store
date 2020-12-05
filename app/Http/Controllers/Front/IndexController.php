@@ -16,7 +16,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $sections = Section::with('categories')->where(['status'=>1])->get();
+        $sections = Section::with('categories')->where('status',1)->get();
         $features = Product::where(['is_featured'=>'Yes','status'=>1])->inRandomOrder()->get()->toArray();
         $featureChunk = array_chunk($features, 4);
         $newProducts = Product::where('status',1)->latest()->take(6)->get()->toArray();
