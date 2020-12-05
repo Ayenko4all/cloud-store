@@ -73,7 +73,7 @@
                                                 @if(!empty($product->main_image) && file_exists('images/product_image/small/'.$product->main_image))
                                                 <img src="{{ asset('images/product_image/small/'.$product->main_image)}}" alt="" style="width: 50px">
                                                 @else
-                                                    <img src="{{ asset('images/product_image/small/No_Image_small.png')}}" alt="" style="width: 50px">
+                                                    <img src="{{ asset('images/product_image/small/small-no-image.png')}}" alt="" style="width: 50px">
                                                 @endif
                                             </td>
                                             <td>{{ $product->category->category_name }}</td>

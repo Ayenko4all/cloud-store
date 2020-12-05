@@ -180,7 +180,7 @@
                                                   </div>
                                               @else
                                                   <div >
-                                                      <img src="{{ asset('images/product_image/small/No_Image_small.png')}}" alt="" style="margin-top: 5px; width: 24.5%">
+                                                      <img src="{{ asset('images/product_image/small/small-no-image.png')}}" alt="" style="margin-top: 5px; width: 24.5%">
                                                   </div>
                                               @endif
                                         @endif
