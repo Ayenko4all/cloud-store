@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Cloud-store | Log in</title>
+    <title>Dexy-store | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,7 +21,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="../../index2.html"><b>Cloud</b>Store</a>
+        <a href="../../index2.html"><b>Dexy</b>Store</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
