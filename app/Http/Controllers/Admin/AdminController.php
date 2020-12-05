@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use function GuzzleHttp\Promise\all;
+use function Sodium\add;
 
 class AdminController extends Controller
 {
@@ -80,6 +82,16 @@ class AdminController extends Controller
         return view('admin.admin_profile',['admin' => $admin]);
     }
 
+    public function deleteAdminImage($admin){
+        $adminImage = Admin::select('id','image')->find($admin);
+        if (file_exists('images/admin_photos/'.$adminImage->image)){
+            unlink('images/admin_photos/'.$adminImage->image);
+        }
+        $adminImage->update(['image'=>'']);
+        session()->flash('success', 'Admin image has been deleted successfully!');
+        return redirect()->back();
+    }
+
     public function logout(){
         Auth::guard('admin')->logout();
         return redirect()->route('admin.login');
@@ -103,10 +115,10 @@ class AdminController extends Controller
                 $extension = $image_tmp->getClientOriginalExtension();
                 //Generate New Image Name
                 $imgName = random_int(111,99999). '.'.$extension;
-                $imgPath = 'images/admin_image/admin_photos/'.$imgName;
+                $imgPath = 'images/admin_photos/'.$imgName;
                 //Upload Image
                 Image::make($image_tmp)->resize(300,400)->save($imgPath);
-                $admin->update(['image' =>  $imgPath]);
+                $admin->update(['image' =>  $imgName]);
             }else{$imgName = "";}
         }
     }

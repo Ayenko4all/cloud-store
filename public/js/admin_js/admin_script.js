@@ -64,7 +64,7 @@ $(document).ready(function (message) {
     $(document).on("click",".confirmDelete",function(){
         var record = $(this).attr('record');
         var recordid = $(this).attr('recordid');
-       // alert(record);
+       alert(record);
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",

@@ -86,8 +86,21 @@
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">image</label>
                                         <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror">
-                                        @if(!empty($admin->image))
-                                            <a href="{{ asset($admin->image) }}" target="_blank">View image</a>
+                                        @if($admin)
+                                            @if(!empty($admin->image))
+                                                <div >
+                                                    <img src="{{ asset('images/admin_photos/'.$admin->image) }}" alt="" style="margin-top: 5px; width: 19.5%">
+                                                    &nbsp;
+                                                    <a href="javascript:void (0)" class="confirmDelete" record="admin-image" recordid="{{ $admin->id }}"
+                                                    >
+                                                        Delete image
+                                                    </a>
+                                                </div>
+                                            @else
+                                                <div >
+                                                    <img src="{{ asset('images/product_image/small/small-no-image.png')}}" alt="" style="margin-top: 5px; width: 24.5%">
+                                                </div>
+                                            @endif
                                         @endif
                                         @error('image')
                                         <span class="invalid-feedback" role="alert">

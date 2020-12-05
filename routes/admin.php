@@ -23,6 +23,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function () {
         Route::post('check-current-pwd', 'AdminController@chkCurrentPassword')->name('admin.check.current.pwd');
         Route::post('update-current-pwd', 'AdminController@updateCurrentPassword')->name('admin.update.current.pwd');
         Route::match(['get','post'],'profile', 'AdminController@updateProfile')->name('admin.profile');
+        Route::get('delete-admin-image/{admin}', 'AdminController@deleteAdminImage')->name('admin.delete.admin.image');
 
         /*SECTIONS ROUTES*/
         Route::get('sections', 'SectionController@index')->name('sections.index');
