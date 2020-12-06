@@ -275,7 +275,7 @@
                                           <label for="meta_keywords">Sleeve</label>
                                           <select name="sleeve" id="sleeve" class="form-control">
                                               <option value="">--Select--</option>
-                                              @foreach($sleeveArray as $sleeve)
+                                              @foreach($productFilters['sleeveArray'] as $sleeve)
                                                   <option value="{{ $sleeve }}"
                                                           @if(!empty(old('sleeve') && $sleeve == old('sleeve'))) selected
                                                           @else
@@ -298,7 +298,7 @@
                                           <label for="pattern">Pattern</label>
                                           <select name="pattern" id="pattern" class="form-control">
                                               <option value="">--Select--</option>
-                                              @foreach($patternArray as $pattern)
+                                              @foreach($productFilters['patternArray'] as $pattern)
                                                   <option value="{{ $pattern }}"
                                                       @if(!empty(old('pattern') && $pattern == old('pattern'))) selected
                                                       @else
@@ -318,7 +318,7 @@
                                           <label for="meta_keywords">Select Fit</label>
                                           <select name="fit" id="fit" class="form-control">
                                               <option value="">--Select--</option>
-                                              @foreach($fitArray as $fit)
+                                              @foreach($productFilters['fitArray'] as $fit)
                                                   <option value="{{ $fit }}"
                                                       @if(!empty(old('fit') && $fit == old('fit'))) selected
                                                       @else
@@ -341,7 +341,7 @@
                                           <label for="occasion">Select Occasion</label>
                                           <select name="occasion" id="occasion" class="form-control">
                                               <option value="">--Select--</option>
-                                              @foreach($occasionArray as $occasion)
+                                              @foreach($productFilters['occasionArray'] as $occasion)
                                                   <option value="{{ $occasion }}"
                                                       @if(!empty(old('occasion') && $occasion == old('occasion'))) selected
                                                       @else
@@ -364,7 +364,7 @@
                                           <label for="meta_keywords">Fabric</label>
                                           <select name="fabric" id="fabric" class="form-control">
                                               <option value="">--Select--</option>
-                                              @foreach($fabricArray as $fabric)
+                                              @foreach($productFilters['fabricArray'] as $fabric)
                                                   <option value="{{ $fabric }}"
                                                       @if(!empty(old('fabric') && $fabric == old('fabric'))) selected
                                                       @else
