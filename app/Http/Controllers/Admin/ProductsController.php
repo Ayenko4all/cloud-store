@@ -23,13 +23,11 @@ class ProductsController extends Controller
 
     public function create(){
         $title = "Add Product";
-        $productData = [];
-        return view('admin.products.create', ['title'=>$title, 'productData'=> $productData]);
+        return view('admin.products.create', ['title'=>$title,'productData'=> $productData =[]]);
     }
 
     public function edit(Product $product){
         $title = "Edit Product";
-        //$productData = $product->where('id',$id)->first();
         $productData=json_decode(json_encode($product), true);
         return view('admin.products.create', ['title'=>$title, 'productData'=>$productData]);
     }

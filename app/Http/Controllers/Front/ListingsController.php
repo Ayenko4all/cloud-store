@@ -20,13 +20,28 @@ class ListingsController extends Controller
     public function index($url, Request $request)
     {
         if ($request->ajax()){
+            $data = $request->all();
+            //echo "<pre>";print_r($data);
             $listings = Category::where(['url'=>$request->input('url') ,'status'=>1])->count();
             if ($listings > 0){
                 $categoryDetails = Category::categoryDetails($request->input('url'));
                 $categoryProduct = Product::whereIn('category_id',$categoryDetails['catIds'])
                     ->where(['status' => 1])->with('brand');
-                /*check for sort option*/
-                if(isset($_GET['sort'])&& !empty($_GET['sort'])){
+                /*filter*/
+                if (isset($data['fabric']) && !empty($data['fabric'])){
+                    $categoryProduct->whereIn('products.fabric', $data['fabric']);
+                }elseif (isset($data['occasion']) && !empty($data['occasion'])){
+                    $categoryProduct->whereIn('products.occasion', $data['occasion']);
+                }elseif (isset($data['fit']) && !empty($data['fit'])){
+                    $categoryProduct->whereIn('products.fit', $data['fit']);
+                }elseif (isset($data['sleeve']) && !empty($data['sleeve'])){
+                    $categoryProduct->whereIn('products.sleeve', $data['sleeve']);
+                }elseif (isset($data['pattern']) && !empty($data['pattern'])){
+                    $categoryProduct->whereIn('products.pattern', $data['pattern']);
+                }
+
+                /*check for sort option* selected*/
+                if(isset($_GET['sort']) && !empty($_GET['sort'])){
                     switch($_GET['sort']){
                         case "product_latest":
                             $categoryProduct->latest();
@@ -55,13 +70,14 @@ class ListingsController extends Controller
         }else{
             $sections = Section::with('categories')->where(['status'=>1])->get();
             $listings = Category::where(['url'=>$url, 'status'=>1])->count();
+            $productFilters = Product::productFilters();
             if ($listings > 0){
                 $categoryDetails = Category::categoryDetails($url);
                 $categoryProduct = Product::whereIn('category_id',$categoryDetails['catIds'])
                     ->where(['status' => 1])->with('brand');
                 $categoryProduct=$categoryProduct->simplePaginate(10);
                 return  view('front.products.listings.index')
-                    ->with(compact('sections','categoryDetails','categoryProduct','url'));
+                    ->with(compact('sections','categoryDetails','categoryProduct','url','productFilters'));
             }else{
                 abort(404);
             }

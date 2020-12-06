@@ -17,6 +17,37 @@
       @endforeach
     </ul>
     <br/>
+    @if(request()->routeIs('front.listings.index'))
+        <div class="well well-small">
+            <h5><i class="fas fa-filter" aria-hidden="true"></i>Filter By</h5>
+            <h5>Fabric</h5>
+            @foreach($productFilters['fabricArray'] as $fabric)
+                <input class="fabric" type="checkbox" value="{{ $fabric }}" name="fabric[]" id="{{ $fabric }}" style="margin-top: -3px">
+                &nbsp;&nbsp;{{ $fabric }}<br>
+            @endforeach
+            <h5>Occasion</h5>
+            @foreach($productFilters['occasionArray'] as $occasion)
+                <input class="occasion" type="checkbox" value="{{ $occasion }}" name="occasion[]" id="{{ $occasion }}" style="margin-top: -3px">
+                &nbsp;&nbsp;{{ $occasion }}<br>
+            @endforeach
+            <h5>Fit</h5>
+            @foreach($productFilters['fitArray'] as $fit)
+                <input class="fit" type="checkbox" value="{{ $fit }}" name="fit[]" id="{{ $fit }}" style="margin-top: -3px">
+                &nbsp;&nbsp;{{ $fit }}<br>
+            @endforeach
+            <h5>Pattern</h5>
+            @foreach($productFilters['patternArray'] as $pattern)
+                <input class="pattern"  type="checkbox" value="{{ $pattern }}" name="pattern[]" id="{{ $pattern }}" style="margin-top: -3px">
+                &nbsp;&nbsp;{{ $pattern }}<br>
+            @endforeach
+            <h5>Sleeve</h5>
+            @foreach($productFilters['sleeveArray'] as $sleeve)
+                <input class="sleeve" type="checkbox" value="{{ $sleeve }}" name="sleeve[]" id="{{ $sleeve }}" style="margin-top: -3px">
+                &nbsp;&nbsp;{{ $sleeve }}<br>
+            @endforeach
+        </div>
+    @endif
+    <br />
     <div class="thumbnail">
         <img src="{{ asset('images/front_image/payment_methods.png') }}" title="Payment Methods" alt="Payments Methods">
         <div class="caption">
