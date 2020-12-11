@@ -11,7 +11,7 @@ $(document).ready(function (message){
         var pattern = get_filter('pattern');
         var sleeve = get_filter('sleeve');
        $.ajax({
-           url:url,
+           url:'category'+url,
            method:'post',
            data:{occasion:occasion,fabric:fabric,fit:fit,sleeve:sleeve,pattern:pattern,sort:sort,url:url},
            success:function (data) {
@@ -26,10 +26,10 @@ $(document).ready(function (message){
         var fit = get_filter('fit');
         var pattern = get_filter('pattern');
         var sleeve = get_filter('sleeve');
-        var sort = $("#sort option:selected").text();
+        var sort = $("#sort option:selected").val();
         var url = $("#url").val();
         $.ajax({
-            url:url,
+            url:'category'+url,
             method:'post',
             data:{occasion:occasion,fabric:fabric,fit:fit,sleeve:sleeve,pattern:pattern,sort:sort,url:url},
             success:function (data) {

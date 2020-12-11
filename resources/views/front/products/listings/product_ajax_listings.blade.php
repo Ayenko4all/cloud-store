@@ -53,7 +53,6 @@
                             {{ $product['brand']['name'] }}
                         </p>
                         <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="fa fa-search"></i></a> <a class="btn" href="#">Add to <i class="fas fa-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&#8358;.{{$product['product_price']}}</a></h4>
-                        <p>{{ $product['fabric'] }}</p>
                     </div>
                 </div>
             </li>
