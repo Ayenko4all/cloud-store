@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Section;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Routing\Route;
 
 class ListingsController extends Controller
 {
@@ -19,9 +21,9 @@ class ListingsController extends Controller
      */
     public function index($url, Request $request)
     {
+        Paginator::useBootstrap();
         if ($request->ajax()){
             $data = $request->all();
-            //echo "<pre>";print_r($data);
             $listings = Category::where(['url'=>$request->input('url') ,'status'=>1])->count();
             if ($listings > 0){
                 $categoryDetails = Category::categoryDetails($request->input('url'));
@@ -30,13 +32,17 @@ class ListingsController extends Controller
                 /*filter*/
                 if (isset($data['fabric']) && !empty($data['fabric'])){
                     $categoryProduct->whereIn('products.fabric', $data['fabric']);
-                }elseif (isset($data['occasion']) && !empty($data['occasion'])){
+                }
+                if (isset($data['occasion']) && !empty($data['occasion'])){
                     $categoryProduct->whereIn('products.occasion', $data['occasion']);
-                }elseif (isset($data['fit']) && !empty($data['fit'])){
+                }
+                if (isset($data['fit']) && !empty($data['fit'])){
                     $categoryProduct->whereIn('products.fit', $data['fit']);
-                }elseif (isset($data['sleeve']) && !empty($data['sleeve'])){
+                }
+                if (isset($data['sleeve']) && !empty($data['sleeve'])){
                     $categoryProduct->whereIn('products.sleeve', $data['sleeve']);
-                }elseif (isset($data['pattern']) && !empty($data['pattern'])){
+                }
+                if (isset($data['pattern']) && !empty($data['pattern'])){
                     $categoryProduct->whereIn('products.pattern', $data['pattern']);
                 }
 
