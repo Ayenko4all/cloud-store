@@ -45,7 +45,7 @@
                                 <input type="text" class="search-query span2" placeholder="Search"/>
                             </form>
                             <ul class="nav pull-right">
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="{{ route('front.contact.us') }}">Contact</a></li>
                                 <li class="divider-vertical"></li>
                                 <li><a href="#">Login</a></li>
                             </ul>
