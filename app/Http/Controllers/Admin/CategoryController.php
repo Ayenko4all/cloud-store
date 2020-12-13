@@ -45,7 +45,6 @@ class CategoryController extends Controller
             $categoryData=json_decode(json_encode( $categoryData), true);
             $getCategories = Category::with('subcategories')->where(['parent_id' => 0,'section_id'=>$categoryData['section_id']])->get();
             $getCategories=json_decode(json_encode($getCategories), true);
-            //echo "<pre>";print_r( $categoryData);exit;
             $category = Category::find($id);
 
         }

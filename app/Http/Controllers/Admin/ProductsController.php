@@ -172,7 +172,6 @@ class ProductsController extends Controller
         //dd($request->all());
 
         $categoryDetail = Category::find($request->input('category_id'));
-        dd($categoryDetail);
         $product->section_id = $categoryDetail->section_id;
         $product->category_id = $request->input('category_id');
         $product->brand_id = $request->input('brand_id');
