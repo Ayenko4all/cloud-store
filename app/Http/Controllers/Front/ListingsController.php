@@ -19,7 +19,7 @@ class ListingsController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index($url, Request $request)
+    public function __invoke($url, Request $request)
     {
         Paginator::useBootstrap();
         if ($request->ajax()){

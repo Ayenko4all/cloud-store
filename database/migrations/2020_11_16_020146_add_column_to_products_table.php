@@ -14,7 +14,7 @@ class AddColumnToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('brand_id')->nullable()->after('section_id');
+            $table->foreignUuid('brand_id')->nullable()->after('section_id');
         });
     }
 

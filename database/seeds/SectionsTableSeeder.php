@@ -13,9 +13,9 @@ class SectionsTableSeeder extends Seeder
     public function run()
     {
         $sectionsRecords = [
-            ['id'=>1,'name'=>'Men','status'=>1],
-            ['id'=>2,'name'=>'Women','status'=>1],
-            ['id'=>3,'name'=>'Kids','status'=>1],
+            ['id'=>'137d9e21-b3d3-4913-9e2a-2310e0223a67','name'=>'Men','status'=>1],
+            ['id'=>'232d9e21-b3d3-4913-9e2a-2310e0223a61','name'=>'Women','status'=>1],
+            ['id'=>'837d9e21-b3d3-4913-9e2a-2310e0223a61','name'=>'Kids','status'=>1],
         ];
         foreach ($sectionsRecords as $key => $record){
             Section::create($record);

@@ -14,8 +14,8 @@ class CreateProductsAttributesTable extends Migration
     public function up()
     {
         Schema::create('product_attributes', function (Blueprint $table) {
-            $table->id();
-            $table->integer('product_id')->nullable();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('product_id');
             $table->string('size')->nullable();
             $table->float('price')->nullable();
             $table->integer('stock')->nullable();

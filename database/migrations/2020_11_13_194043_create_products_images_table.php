@@ -14,8 +14,8 @@ class CreateProductsImagesTable extends Migration
     public function up()
     {
         Schema::create('products_images', function (Blueprint $table) {
-            $table->id();
-            $table->integer('product_id');
+            $table->uuid('id')->primary();
+            $table->foreignUuid('product_id');
             $table->string('image');
             $table->tinyInteger('status')->default('1');
             $table->timestamps();

@@ -17,7 +17,7 @@ class AdminTableSeeder extends Seeder
         Db::table('admins')->delete();
         $adminRecords = [
            [
-               'id' => 1,
+               'id' => '201d0e21-b3d3-0612-9e2a-2310e0343c23',
                'name' => 'admin',
                'type' => 'admin',
                'mobile' => '09030448824',
@@ -27,7 +27,7 @@ class AdminTableSeeder extends Seeder
                'status' =>1
            ],
             [
-                'id' => 2,
+                'id' => '401d0e01-b3d3-4912-9e2a-0010e0343c23',
                 'name' => 'adminjohn',
                 'type' => 'subadmin',
                 'mobile' => '09075021402',

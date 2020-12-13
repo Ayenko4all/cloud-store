@@ -3,8 +3,9 @@
     <div id="myCarousel" class="carousel slide">
         <div class="carousel-inner">
            @foreach($banners as $key => $banner)
+                @if(!empty($banner['image']) && file_exists('images/banner_image/'.$banner['image']))
                 <div class="item
-                @if($key === 0)
+                    @if($key === 0)
                     'active'
                 @endif
                     ">
@@ -18,6 +19,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
            @endforeach
         </div>
         @if(count($banners) > 1)

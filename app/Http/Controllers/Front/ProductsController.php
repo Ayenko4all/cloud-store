@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Product;
+use App\Section;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -41,12 +43,14 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @param $code
+     * @return void
      */
-    public function show($id)
+    public function show($product, $code)
     {
-        //
+        $sections = Section::with('categories')->where(['status'=>1])->get();
+        return view('front.products.details.show')->with(compact(['product','sections']));
     }
 
     /**

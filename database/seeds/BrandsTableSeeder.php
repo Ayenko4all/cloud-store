@@ -13,11 +13,11 @@ class BrandsTableSeeder extends Seeder
     public function run()
     {
         $brandRecords = [
-            ['id'=>1,'name'=>'Polo','status'=>1],
-            ['id'=>2,'name'=>'Nike','status'=>1],
-            ['id'=>3,'name'=>'Jack','status'=>1],
-            ['id'=>4,'name'=>'Ankara','status'=>1],
-            ['id'=>5,'name'=>'Gucci','status'=>1],
+            ['id'=>'371d9e21-b3d3-4913-9e2a-2310e0223a64','name'=>'Polo','status'=>1],
+            ['id'=>'371d0e21-b3d3-4913-9e2a-2310e0223a67','name'=>'Nike','status'=>1],
+            ['id'=>'711d9e21-b3d3-4913-9e2a-2310e0223a67','name'=>'Jack','status'=>1],
+            ['id'=>'371d9e21-b3d3-4913-9e2a-2010e0223a67','name'=>'Ankara','status'=>1],
+            ['id'=>'371d9e21-b3d5-4913-9e2a-2310e0223a67','name'=>'Gucci','status'=>1],
         ];
         foreach ($brandRecords as $key => $record){
             Brand::create($record);

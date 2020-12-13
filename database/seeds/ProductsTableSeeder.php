@@ -14,9 +14,9 @@ class ProductsTableSeeder extends Seeder
     {
         $productRecords = [
             [
-                'id'=>1,
-                'category_id'=>2,
-                'section_id'=>1,
+                'id'=>'371d0e21-b3d3-4912-9e2a-2310e0223c23',
+                'category_id'=>'371d9e21-b3d3-4913-9e2a-2310e0223a67',
+                'section_id'=>'137d9e21-b3d3-4913-9e2a-2310e0223a67',
                 'product_name'=>'Blue T-Shirt',
                 'product_code'=>'BT001',
                 'product_color'=>'Blue',
@@ -34,13 +34,14 @@ class ProductsTableSeeder extends Seeder
                 'occasion'=>'',
                 'meta_title'=>'',
                 'meta_description'=>'',
+                'brand_id'=>'371d0e21-b3d3-4913-9e2a-2310e0223a67',
                 'is_featured'=>'No',
                 'status'=>1
             ],
             [
-                'id'=>2,
-                'category_id'=>7,
-                'section_id'=>2,
+                'id'=>'371d0e21-b3d3-4913-9e2a-2310e0223c23',
+                'category_id'=>'371d9e21-b3d3-4913-9e2a-2310e0223a67',
+                'section_id'=>'137d9e21-b3d3-4913-9e2a-2310e0223a67',
                 'product_name'=>'Brown shoe',
                 'product_code'=>'BH001',
                 'product_color'=>'Brown',
@@ -58,6 +59,7 @@ class ProductsTableSeeder extends Seeder
                 'occasion'=>'',
                 'meta_title'=>'',
                 'meta_description'=>'',
+                'brand_id'=>'371d0e21-b3d3-4913-9e2a-2310e0223a67',
                 'is_featured'=>'Yes',
                 'status'=>1
             ]

@@ -25,7 +25,9 @@ Route::namespace('Front')->group(function (){
 
     Route::get('/','IndexController@index')->name('front.index');
 
-    Route::get('/category/{url}','ListingsController@index')->name('front.listings.index');
+    Route::get('/category/{url}','ListingsController')->name('front.listings.index');
+
+    Route::get('/product/{code}/{product}', 'ProductsController@show')->name('front.product.show');
 
 //    $catUrls = \App\Category::select(['url'])->where('status',1)->get()->pluck('url')->toArray();
 //    //echo "<pre>"; print_r($catUrls); die;

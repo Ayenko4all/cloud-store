@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Model;
 
 class Banner extends Model
 {
+    use Uuids;
     protected $guarded = [];
 
     public static  function getBanners(){
