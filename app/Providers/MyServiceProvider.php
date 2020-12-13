@@ -32,6 +32,7 @@ class MyServiceProvider extends ServiceProvider
             /*SECTION WITH CATEGORIES AND SUB CATEGORIES*/
             $categories = Section::with(['categories'])->get();
             $categories=json_decode(json_encode($categories), true);
+            //dd($categories);
             $brands = Brand::where('status',1)->get();
             $view->with(['categories'=>$categories, 'brands'=>$brands, 'productFilters' => Product::productFilters()]);
 
