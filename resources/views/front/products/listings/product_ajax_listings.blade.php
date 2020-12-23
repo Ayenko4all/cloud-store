@@ -16,7 +16,7 @@
                 <p>
                     {!! $product['description'] !!}
                 </p>
-                <a class="btn btn-small pull-right" href="product_details.html">View Details</a>
+                <a class="btn btn-small pull-right" href="{{ route('front.product.show',[$product['id'],$product['product_code']]) }}">View Details</a>
                 <br class="clr"/>
             </div>
             <div class="span3 alignR">
@@ -26,8 +26,8 @@
                         <input type="checkbox">  Adds product to compair
                     </label><br/>
 
-                    <a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" fas fa-shopping-cart"></i></a>
-                    <a href="product_details.html" class="btn btn-large"><i class="fa fa-search"></i></a>
+                    <a href="{{ route('front.product.show',[$product['id'],$product['product_code']]) }}" class="btn btn-large btn-primary"> Add to <i class=" fas fa-shopping-cart"></i></a>
+                    <a href="{{ route('front.product.show',[$product['id'],$product['product_code']]) }}" class="btn btn-large"><i class="fa fa-search"></i></a>
 
                 </form>
             </div>
@@ -40,7 +40,7 @@
         @foreach($categoryProduct as $key => $product)
             <li class="span3">
                 <div class="thumbnail">
-                    <a href="product_details.html">
+                    <a href="{{ route('front.product.show',[$product['id'],$product['product_code']]) }}">
                         @if(!empty($product['main_image']) && file_exists('images/product_image/small/'.$product['main_image']))
                             <img src="{{ asset('images/product_image/small/'.$product['main_image']) }}" alt="" style="width: 140px">
                         @else
@@ -52,7 +52,7 @@
                         <p>
                             {{ $product['brand']['name'] }}
                         </p>
-                        <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="fa fa-search"></i></a> <a class="btn" href="#">Add to <i class="fas fa-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&#8358;.{{$product['product_price']}}</a></h4>
+                        <h4 style="text-align:center"><a class="btn" href="{{ route('front.product.show',[$product['id'],$product['product_code']]) }}"> <i class="fa fa-search"></i></a> <a class="btn" href="#">Add to <i class="fas fa-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&#8358;.{{$product['product_price']}}</a></h4>
                     </div>
                 </div>
             </li>

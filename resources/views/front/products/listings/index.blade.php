@@ -3,7 +3,7 @@
 @section('content')
     <div class="span9">
         <ul class="breadcrumb">
-            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="{{ route('front.index') }}">Home</a> <span class="divider">/</span></li>
             <li class="active">{!! $categoryDetails['breadcrumbs'] !!}</li>
         </ul>
         <h3> {{ $categoryDetails['catDetails']['category_name'] }} <small class="pull-right">{{count($categoryProduct)}} products are available </small></h3>

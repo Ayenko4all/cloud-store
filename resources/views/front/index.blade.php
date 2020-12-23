@@ -18,7 +18,7 @@
                                 <li class="span3">
                                     <div class="thumbnail">
                                         <i class="tag"></i>
-                                        <a href="product_details.html">
+                                        <a href="{{ route('front.product.show',[$item['id'],$item['product_code']]) }}">
                                             @if(!empty($item['main_image']) && file_exists('images/product_image/small/'.$item['main_image']))
                                                 <img src="{{ asset('images/product_image/small/'.$item['main_image']) }}" alt="">
                                             @else
@@ -27,7 +27,7 @@
                                         </a>
                                         <div class="caption">
                                             <h5>{{ $item['product_name'] }}</h5>
-                                            <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">&#8358;.{{ $item['product_price'] }}</span></h4>
+                                            <h4><a class="btn" href="{{ route('front.product.show',[$item['id'],$item['product_code']]) }}">VIEW</a> <span class="pull-right">&#8358;.{{ $item['product_price'] }}</span></h4>
                                         </div>
                                     </div>
                                 </li>
@@ -48,7 +48,7 @@
             @foreach($newProducts as $newProduct)
             <li class="span3">
                 <div class="thumbnail">
-                    <a  href="product_details.html">
+                    <a  href="{{ route('front.product.show',[$newProduct['id'],$newProduct['product_code']]) }}">
                         @if(!empty($newProduct['main_image']) && file_exists('images/product_image/small/'.$newProduct['main_image']))
                             <img src="{{ asset('images/product_image/small/'.$newProduct['main_image']) }}" alt="" >
                         @else
@@ -61,7 +61,7 @@
                            {{ $newProduct['product_code'] }} .
                         </p>
 
-                        <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="fa fa-search"></i></a> <a class="btn" href="#">Add to <i class="fas fa-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&#8358;.{{$newProduct['product_price']}}</a></h4>
+                        <h4 style="text-align:center"><a class="btn" href="{{ route('front.product.show',[$newProduct['id'],$newProduct['product_code']]) }}"> <i class="fa fa-search"></i></a> <a class="btn" href="#">Add to <i class="fas fa-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&#8358;.{{$newProduct['product_price']}}</a></h4>
                     </div>
                 </div>
             </li>

@@ -39,7 +39,7 @@ class ProductsTableSeeder extends Seeder
                 'status'=>1
             ],
             [
-                'id'=>'371d0e21-b3d3-4913-9e2a-2310e0223c23',
+                'id'=>'072d0e21-b3d3-4913-9e2a-2310e0223c23',
                 'category_id'=>'371d9e21-b3d3-4913-9e2a-2310e0223a67',
                 'section_id'=>'137d9e21-b3d3-4913-9e2a-2310e0223a67',
                 'product_name'=>'Brown shoe',

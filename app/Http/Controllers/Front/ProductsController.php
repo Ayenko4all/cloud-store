@@ -4,86 +4,50 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\ProductAttribute;
 use App\Section;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
      *
      * @param Product $product
      * @param $code
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show($product, $code)
     {
         $sections = Section::with('categories')->where(['status'=>1])->get();
-        return view('front.products.details.show')->with(compact(['product','sections']));
+        $productDetail = Product::with(['category','section','brand','attributes','product_images'])->find($product);
+        $stock = ProductAttribute::where('product_id',$product)->sum('stock');
+        $randomProducts = Product::where(['status'=>1,'category_id'=>$productDetail->category->id])
+            ->where('id','!=',$product)->inRandomOrder()->limit(3)->get();
+        //dd($randomProducts);
+        return view('front.products.details.show')->with(compact(['productDetail','sections','stock','randomProducts']));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function getProductPriceBySize(Request $request){
+        if ($request->ajax()){
+            $data = $request->all();
+          $getProductPriceBySize = ProductAttribute::where(['product_id'=>$data['id'],'size'=>$data['size']])->first();
+          return response()->json(['getProductPriceBySize'=>$getProductPriceBySize]);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function checkProductQty(Request $request){
+        if ($request->ajax()){
+            $data = $request->all();
+            dd($data);
+            $getProductQty = ProductAttribute::where(['product_id'=>$data['id'],'stock'=>$data['qty']])->first();
+            if ($getProductQty)
+            dd($getProductQty->stock);
+            return response()->json(['getProductQty'=>$getProductQty->stock]);
+        }
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 }

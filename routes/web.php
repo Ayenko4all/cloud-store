@@ -29,6 +29,10 @@ Route::namespace('Front')->group(function (){
 
     Route::get('/product/{code}/{product}', 'ProductsController@show')->name('front.product.show');
 
+    Route::post('/product/price-by-size', 'ProductsController@getProductPriceBySize')->name('front.getProductPriceBySize');
+
+    Route::post('/product/qty-check', 'ProductsController@checkProductQty')->name('front.checkProductQty');
+
 //    $catUrls = \App\Category::select(['url'])->where('status',1)->get()->pluck('url')->toArray();
 //    //echo "<pre>"; print_r($catUrls); die;
 //

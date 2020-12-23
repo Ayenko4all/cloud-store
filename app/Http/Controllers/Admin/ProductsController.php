@@ -169,7 +169,6 @@ class ProductsController extends Controller
                 $videoName = "";
             }
         }
-        //dd($request->all());
 
         $categoryDetail = Category::find($request->input('category_id'));
         $product->section_id = $categoryDetail->section_id;

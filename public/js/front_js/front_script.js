@@ -2,6 +2,12 @@ $(document).ready(function (message){
     // $("#sort").on('change',function () {
     //     this.form.submit();
     // })
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $("#sort").on('change', function () {
         let sort = $(this).val();
         var url = $("#url").val();
@@ -46,6 +52,46 @@ $(document).ready(function (message){
         });
         return filter;
     }
+    $("#GetPriceBySize").change(function (message) {
+       let id = $(this).attr('productId');
+       let size = $(this).val();
+       if (size == ''){
+           alert(' Please select a size');
+       }
+       //alert(size +' '+ productId);
+        $.ajax({
+            url: '/product/price-by-size',
+            data:{size:size,id:id},
+            type:'post',
+            success:function (resp) {
+                //alert(resp)
+                $(".attribute_price").html('&#8358;.'+resp['getProductPriceBySize']['price']);
+                $(".stockBySize").html(resp['getProductPriceBySize']['stock']+' '+'items in stock')
+                    .attr("id", 'stock').attr("stock", resp['getProductPriceBySize']['stock'])
+            },
+            error:function () {
+                alert('Error')
+            }
+        });
+    })
 
+    $("#qty,#stock").on('click',function () {
+        let qty = $("#qty").val();
+        let id = $(this).attr('product-id');
+        let stock = $(this).attr('stock');
+        alert(qty+' '+id+' '+stock);
+        $.ajax({
+            url:'/product/qty-check',
+            type:'post',
+            data:{qty:qty,id:id},
+            success:function (resp) {
+                alert(resp)
+            },
+            error:function () {
+                alert('Error')
+            }
+
+        });
+    })
 
 });
