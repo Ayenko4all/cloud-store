@@ -75,20 +75,36 @@ $(document).ready(function (message){
         });
     })
 
-    $("#qty,#stock").on('click',function () {
-        let qty = $("#qty").val();
+    $("#qty").on('click',function () {
+        let errorMessage = $("#errorMessage").hide();
+        let stock = $("#qty").val();
+        let size = $("#GetPriceBySize").val();
         let id = $(this).attr('product-id');
-        let stock = $(this).attr('stock');
-        alert(qty+' '+id+' '+stock);
+        let addcartbutton = $("#add-cart-button").removeAttr('disabled');
+        //console.log(addcartbutton)
+       // alert($(this).attr('productId') );
+        $("#GetPriceBySize").change(function(){
+            if ($(this).attr('productId') != ''){
+                errorMessage.hide();
+                addcartbutton.removeAttr('disabled');
+            }
+        });
+
         $.ajax({
             url:'/product/qty-check',
             type:'post',
-            data:{qty:qty,id:id},
+            data:{stock:stock,id:id,size:size},
             success:function (resp) {
-                alert(resp)
+                if (resp !== ''){
+                    errorMessage.html(resp['getProductSize']).css({"color":"red","padding-top":"3px"}).show();
+                    errorMessage.html(resp['getProductQty']).css({"color":"red","padding-top":"3px"}).show();
+                    addcartbutton.attr('disabled', 'disabled');
+                }else {
+                    addcartbutton.removeAttr('disabled');
+                }
             },
             error:function () {
-                alert('Error')
+                alert('Error something went wrong ');
             }
 
         });

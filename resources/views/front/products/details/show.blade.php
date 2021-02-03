@@ -43,10 +43,13 @@
                 <h3>{{ $productDetail->product_name }} </h3>
                 <small>- {{ $productDetail->brand->name }}</small>
                 <hr class="soft"/>
-                <small class="stockBySize" id="stock">{{ $stock }} items in stock</small>
+                <small class="stockBySize" id="stock-{{ $stock }}">{{ $stock }} items in stock</small>
                 <form class="form-horizontal qtyFrm">
                     <div class="control-group">
-                        <h4 class="attribute_price">&#8358;.{{ $productDetail->product_price }}</h4>
+                        <div>
+                            <h4 class="attribute_price">&#8358;.{{ $productDetail->product_price }}</h4>
+                            <p id="errorMessage" class=""></p>
+                        </div>
                         <select class="span2 pull-left" id="GetPriceBySize" name="size_by_price" productId="{{ $productDetail->id }}">
                             <option value="">--Select Size--</option>
                             @foreach($productDetail->attributes as $key => $attribute)
@@ -54,7 +57,7 @@
                             @endforeach
                         </select>
                         <input type="number" class="span1" placeholder="Qty." min="0" id="qty" product-id="{{ $productDetail->id }}"/>
-                        <button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" fas fa-shopping-cart"></i></button>
+                        <button type="submit" class="btn btn-large btn-primary pull-right add-cart-button" id="add-cart-button" > Add to cart <i class=" fas fa-shopping-cart"></i></button>
                     </div>
                 </form>
                 <hr class="soft clr"/>

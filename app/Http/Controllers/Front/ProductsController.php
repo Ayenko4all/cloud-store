@@ -40,11 +40,16 @@ class ProductsController extends Controller
     public function checkProductQty(Request $request){
         if ($request->ajax()){
             $data = $request->all();
-            dd($data);
-            $getProductQty = ProductAttribute::where(['product_id'=>$data['id'],'stock'=>$data['qty']])->first();
-            if ($getProductQty)
-            dd($getProductQty->stock);
-            return response()->json(['getProductQty'=>$getProductQty->stock]);
+            if ( $data['size'] == ''){
+                return response()->json(['getProductSize'=> 'Please select a size!']);
+            }
+            //dd($data);
+            $getProductQty= ProductAttribute::where(['product_id'=>$data['id'],'size'=>$data['size']])->first()->toArray();
+            //dd($getProductQty);
+            if ($getProductQty['stock'] < $data['stock']){
+                return response()->json(['getProductQty'=> 'Product quantity has exceeds the stock quantity!']);
+            }
+
         }
 
     }
